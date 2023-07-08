@@ -8,7 +8,7 @@ import StackRoutes from "@react-navigation/native";
 import { SupplyStack } from "./supplyer.routs";
 import { styles } from "./styled";
 import { Ionicons } from "@expo/vector-icons";
-import theme from "../global/theme";
+import theme from "../global/theme/theme";
 import { FruitStack } from "./fruits.routs";
 
 const Tab = createBottomTabNavigator();

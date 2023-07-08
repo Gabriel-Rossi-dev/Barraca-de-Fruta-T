@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import { styles } from "./styled";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import theme from "../../../global/theme";
+import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
