@@ -65,16 +65,11 @@ export default function SupplyerName() {
         Escolha as frutas que esse fornecedor nos fornece
       </Text>
       <TouchableOpacity
-        style={styles.buttonNext}
-        onPress={() => navigation.navigate("SupplyerFinish")}
+        style={styles.addSupplier}
+        onPress={() => navigation.navigate('SupplyerFinish')}
+        
       >
-        <Text style={styles.buttonText}>Próximo</Text>
-        <Ionicons
-          style={styles.chevronForwardPrimary}
-          name={"ios-chevron-forward"}
-          size={36}
-          color={theme.colors.lightGray}
-        />
+        <Text style={styles.textSupply}>Cadastrar Fornecedor</Text>
       </TouchableOpacity>
       
     </View>

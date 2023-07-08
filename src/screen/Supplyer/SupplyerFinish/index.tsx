@@ -42,6 +42,16 @@ export default function SupplyerFinish() {
       <Text style ={styles.titleSupplyer}>
         Fornecedor cadastrado
       </Text>
+      <Text style ={styles.titleText}>
+        Você cadastrou o fornecedor lorem ipsidnf com sucesso !
+      </Text>      
+      <TouchableOpacity
+        style={styles.addSupplier}
+        onPress={() => navigation.navigate('SupplyerList')}
+        
+      >
+        <Text style={styles.textSupply}>Voltar ao início</Text>
+      </TouchableOpacity>
     </View>
   );
 }

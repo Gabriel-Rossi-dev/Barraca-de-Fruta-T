@@ -78,6 +78,13 @@ export function SupplyStack() {
           headerShown: false,
         }}
       />
+       <Screen
+        name="SupplyerList"
+        component={SupplyerList}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Navigator>
   );
 }

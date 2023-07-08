@@ -18,14 +18,16 @@ export const styles = StyleSheet.create({
     marginTop: 26,
     marginStart: 16,
     fontSize: 13,
-    color: theme.colors.primary,
+    color: theme.colors.lightGray,
+    marginEnd: 16
   },
   titleSupplyer: {
     marginEnd: 16,
     marginTop: 44,
     marginStart: 16,
-    fontSize: 15,
-    color: theme.colors.darkGray,
+    fontSize: 19,
+    color: theme.colors.black,
+
   },
   InputText: {
     fontSize: 24,
@@ -51,7 +53,29 @@ export const styles = StyleSheet.create({
   }, 
   imageDone: {
     marginTop: 60, 
-    marginStart: 95, 
-    marginEnd: 95.5,
+    marginStart: 110
+  },
+  addSupplier: {
+    elevation:10,
+    flexDirection: "row",
+    width: 328,
+    height: 40,
+    marginTop: 150,
+    paddingStart: 8,
+    paddingEnd: 8,
+    alignItems: "center",
+    justifyContent:'center',
+    backgroundColor: theme.colors.primary,
+    borderRadius: 17,
+    alignSelf: "center",
+  },
+  textAdd: {
+    paddingEnd: 10,
+    fontSize: 32,
+    color: theme.colors.shape ,
+  },
+  textSupply: {
+    fontSize: 18,
+    color: theme.colors.shape
   }
 });

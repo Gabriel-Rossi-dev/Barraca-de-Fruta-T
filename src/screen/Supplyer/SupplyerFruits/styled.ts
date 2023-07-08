@@ -67,4 +67,27 @@ export const styles = StyleSheet.create({
     color: theme.colors.primary,
     fontSize: 13,
   },
+  addSupplier: {
+    elevation:10,
+    flexDirection: "row",
+    width: 328,
+    height: 40,
+    marginTop: 400,
+    paddingStart: 8,
+    paddingEnd: 8,
+    alignItems: "center",
+    justifyContent:'center',
+    backgroundColor: theme.colors.primary,
+    borderRadius: 17,
+    alignSelf: "center",
+  },
+  textAdd: {
+    paddingEnd: 10,
+    fontSize: 32,
+    color: theme.colors.shape ,
+  },
+  textSupply: {
+    fontSize: 18,
+    color: theme.colors.shape
+  }
 });
