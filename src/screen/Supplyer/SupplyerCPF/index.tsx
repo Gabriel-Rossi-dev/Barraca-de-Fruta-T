@@ -5,11 +5,16 @@ import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 
+function exitRegister(navigation:any){
+  navigation.navigate("SupplyerHome")
+
+}
+
 export default function SupplyerCPF() {
   const navigation: any = useNavigation();
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate("SupplyerHome")}>
+      <TouchableOpacity onPress={() => exitRegister(navigation)}>
       <Ionicons
         style={styles.exit}
         name={"ios-close"}
