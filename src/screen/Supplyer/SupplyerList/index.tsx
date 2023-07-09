@@ -7,7 +7,8 @@ import { useNavigation } from "@react-navigation/native";
 import { Routes } from "../../../routes/bottom.tab";
 import SupplyerName from "../SupplyerName";
 import { TextInput } from "react-native-gesture-handler";
-import {Ionicons} from '@expo/vector-icons'
+import { Ionicons } from "@expo/vector-icons";
+import { Card } from "react-native-paper";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import theme from "../../../global/theme/theme";
@@ -20,16 +21,19 @@ export default function SupplyerHome() {
   const navigation: any = useNavigation();
   return (
     <View>
-      <View 
-        style ={styles.inputSupply}>
-        <Ionicons
+      <View style ={styles.textSupply}>
+      <Card contentStyle = {styles.viewText}>
+        <Ionicons 
+        style = {styles.iconSearch}
+        name= {'search-outline'}
+        size={24}
         />
-        
         <TextInput
           style={styles.InputText}
           placeholder="Pesquisar Fornecedor"
           placeholderTextColor={theme.colors.lightGray}
         />
+      </Card>
       </View>
     </View>
   );

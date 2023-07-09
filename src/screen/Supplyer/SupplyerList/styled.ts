@@ -3,48 +3,29 @@ import theme from "../../../global/theme/theme";
 
 export const styles = StyleSheet.create({
   viewText: {
-    fontWeight: 400,
-    marginTop: 216,
-    marginStart: 16,
-    marginEnd: 16,
-  },
-  textHome: {
-    fontSize: 19,
-    fontStyle: "normal",
-  },
-  addSupplier: {
-    elevation:10,
-    flexDirection: "row",
-    width: 328,
-    height: 40,
-    marginTop: 40,
-    paddingStart: 8,
-    paddingEnd: 8,
-    alignItems: "center",
-    justifyContent:'center',
-    backgroundColor: theme.colors.primary,
-    borderRadius: 17,
-    alignSelf: "center",
-  },
-  textAdd: {
-    paddingEnd: 10,
-    fontSize: 32,
-    color: theme.colors.shape ,
+    flexDirection: 'row',
+    height: 56,
+    paddingStart: 24,
+    alignItems: 'center',
   },
   textSupply: {
-    fontSize: 18,
-    color: theme.colors.shape
+    marginStart: 16,
+    marginTop: 80,
+    marginEnd:16
   },
   InputText: {
-    marginTop: 80
+    
+    flexDirection: 'row',
+    color: theme.colors.black
   },
-  inputSupply:{
-    marginStart: 32,
-    elevation: 50,
-    borderRadius: 17,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,}
-
+  inputSupply: {
+    flexDirection: 'row',
+    justifyContent:'center',
+    alignItems: 'center',
+    marginEnd: 16,
+    flex: 1,
+  },
+    iconSearch:{
+      marginEnd: 16  
+    }
 });

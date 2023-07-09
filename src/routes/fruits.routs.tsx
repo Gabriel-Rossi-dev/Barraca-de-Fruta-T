@@ -1,16 +1,5 @@
 
 import { createStackNavigator } from "@react-navigation/stack";
-import SupplyerHome from "../screen/Supplyer/SupplyerHome";
-import SupplyerName from "../screen/Supplyer/SupplyerName";
-import SupplyerCPF from "../screen/Supplyer/SupplyerCPF";
-import SupplyerPhone from "../screen/Supplyer/SupplyerPhone";
-import SupplyerFruits from "../screen/Supplyer/SupplyerFruits";
-import SupplyerFinish from "../screen/Supplyer/SupplyerFinish";
-import SupplyerInfo from "../screen/Supplyer/SupplyerInfo";
-import SupplyerList from "../screen/Supplyer/SupplyerList";
-import { NavigationContainer } from "@react-navigation/native";
-
-
 import React from "react";
 import FruitHome from "../screen/Fruit/FruitHome";
 import FruitFinish from "../screen/Fruit/FruitFinish";
