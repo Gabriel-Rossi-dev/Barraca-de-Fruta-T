@@ -5,6 +5,7 @@ import FruitHome from "../screen/Fruit/FruitHome";
 import FruitFinish from "../screen/Fruit/FruitFinish";
 import FruitRegister from "../screen/Fruit/FruitRegister";
 import FruitEdit from "../screen/Fruit/FruitEdit";
+import FruitList from "../screen/Fruit/FruitList";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -14,6 +15,13 @@ export function FruitStack() {
       <Screen
         name="FruitHome"
         component={FruitHome}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Screen
+        name="FruitList"
+        component={FruitList}
         options={{
           headerShown: false,
         }}

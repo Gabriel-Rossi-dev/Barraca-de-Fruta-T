@@ -16,7 +16,7 @@ export default function FruitHome() {
       <TouchableOpacity style={styles.addSupplier}
       onPress={() => navigation.navigate('FruitRegister')}>
         <Text style = {styles.textAdd}>+</Text>
-        <Text style = {styles.textSupply}>Cadastrar Fornecedor</Text>
+        <Text style = {styles.textSupply}>Cadastrar Fruta</Text>
       </TouchableOpacity>
 
     </View>

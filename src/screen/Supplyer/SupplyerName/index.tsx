@@ -11,16 +11,16 @@ function exitRegister(navigation: any) {
     "Tem certeza que quer cancelar o cadastro do colaborador?  Você perderá todas as informações inseridas até aqui",
     [
       {
-        text: "Não",
+        text: 'Não'
       },
       {
-        text: "Sim, cancelar",
-        onPress: () => {
-          navigation.navigate("SupplyerHome");
-        },
-      },
+        text: 'Sim, cancelar', onPress: () => {navigation.navigate("SupplyerHome")}
+      }
+
     ]
+
   );
+
 }
 
 export default function SupplyerName() {
