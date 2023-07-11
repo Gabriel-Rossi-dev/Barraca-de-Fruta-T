@@ -9,12 +9,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textSupply: {
+    elevation: 16,
+    backgroundColor: theme.colors.backgroud,
+    borderRadius: 8,
     marginStart: 16,
     marginTop: 80,
     marginEnd:16
   },
   InputText: {
-    
     flexDirection: 'row',
     color: theme.colors.black
   },
@@ -27,5 +29,8 @@ export const styles = StyleSheet.create({
   },
     iconSearch:{
       marginEnd: 16  
+    },
+    marginTop: {
+      paddingTop: 80
     }
 });

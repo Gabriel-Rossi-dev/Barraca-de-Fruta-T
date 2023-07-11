@@ -3,6 +3,7 @@ import theme from "../../../global/theme/theme";
 
 export const styles = StyleSheet.create({
   viewText: {
+    elevation: 5,
     flexDirection: 'row',
     height: 56,
     paddingStart: 24,

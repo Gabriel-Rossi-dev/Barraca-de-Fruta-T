@@ -1,10 +1,9 @@
-import {View} from 'react-native'
-
+import { View, Text } from "react-native";
 
 export default function FruitFinish() {
-    return (
-      <View>
-        
-      </View>
-    );
-  }
+  return (
+    <View>
+      <Text>olá</Text>
+    </View>
+  );
+}

@@ -4,12 +4,33 @@ import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import {Alert} from 'react-native'
+
+
+function exitRegister(navigation: any) {
+  Alert.alert(
+    "Cancelar Cadastro",
+    "Tem certeza que quer cancelar o cadastro do colaborador?  Você perderá todas as informações inseridas até aqui",
+    [
+      {
+        text: 'Não'
+      },
+      {
+        text: 'Sim, cancelar', onPress: () => {navigation.navigate("SupplyerHome")}
+      }
+
+    ]
+
+  );
+
+}
+
 
 export default function SupplyerCPF() {
   const navigation: any = useNavigation();
   return (
     <View>
-      <TouchableOpacity onPress={() => navigation.navigate("SupplyerHome")}>
+      <TouchableOpacity onPress={() => exitRegister(navigation)}>
         <Ionicons
           style={styles.exit}
           name={"ios-close"}

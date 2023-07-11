@@ -9,11 +9,10 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   firstCard: {
-    marginStart: 16,
-    marginTop: 80,
-    marginEnd: 16,
+    marginTop: 80
   },
   headerStyle:{
+    marginBottom: 80,
     marginStart: 24,
     flexDirection: 'row',
     marginTop:58
@@ -28,6 +27,9 @@ export const styles = StyleSheet.create({
     marginStart: 16,
     marginTop: 16,
     marginEnd: 16,
+    elevation: 16,
+    backgroundColor: theme.colors.backgroud,
+    borderRadius: 8,
   },
   InputText: {
     flexDirection: "row",

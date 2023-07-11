@@ -1,4 +1,4 @@
-import { Card } from "react-native-paper";
+// import { Card } from "react-native-paper";
 import { styles } from "./styled";
 import { Ionicons } from "@expo/vector-icons";
 import theme from "../../../global/theme/theme";
@@ -37,7 +37,7 @@ export default function FruitRegister() {
     <View>
       <View style = {styles.headerStyle}>
         <Text style = {styles.textRegister}>
-          Cadastrar Fruta
+          Atualizar Fruta
         </Text>
       <TouchableOpacity onPress={() => exitRegister(navigation)}>
         <Ionicons
@@ -49,7 +49,7 @@ export default function FruitRegister() {
       </TouchableOpacity>
       </View>
       <View style={styles.firstCard}>
-        <Card contentStyle={styles.viewText}>
+        <View style={styles.viewText}>
           <Ionicons
             style={styles.iconSearch}
             name={"nutrition-outline"}
@@ -60,20 +60,20 @@ export default function FruitRegister() {
             placeholder="Nome da fruta"
             placeholderTextColor={theme.colors.lightGray}
           />
-        </Card>
+        </View>
       </View>
       <View style={styles.secondCard}>
-        <Card contentStyle={styles.viewText}>
+        <View style={styles.viewText}>
           <Ionicons style={styles.iconSearch} name={"cash-outline"} size={24} />
           <TextInput
             style={styles.InputText}
             placeholder="Preço do Kilo"
             placeholderTextColor={theme.colors.lightGray}
           />
-        </Card>
+        </View>
       </View>
       <View style={styles.secondCard}>
-        <Card contentStyle={styles.viewText}>
+        <View style={styles.viewText}>
           <Ionicons
             style={styles.iconSearch}
             name={"server-outline"}
@@ -84,10 +84,10 @@ export default function FruitRegister() {
             placeholder="Quantidade no estoque"
             placeholderTextColor={theme.colors.lightGray}
           />
-        </Card>
+        </View>
       </View>
       <View style={styles.secondCard}>
-        <Card contentStyle={styles.viewText}>
+        <View style={styles.viewText}>
           <Ionicons
             style={styles.iconSearch}
             name={"people-outline"}
@@ -98,11 +98,11 @@ export default function FruitRegister() {
             placeholder="Fornecedor"
             placeholderTextColor={theme.colors.lightGray}
           />
-        </Card>
+        </View>
       </View>
       <TouchableOpacity
         style={styles.addSupplier}
-        onPress={() => navigation.navigate("FruitRegister")}
+        onPress={() => navigation.navigate("FruitFinish")}
       >
         <Text style={styles.textSupply}>Cadastrar Fruta</Text>
       </TouchableOpacity>

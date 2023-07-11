@@ -12,6 +12,9 @@ export const styles = StyleSheet.create({
     marginStart: 16,
     marginTop: 80,
     marginEnd: 16,
+    elevation: 16,
+    backgroundColor: theme.colors.backgroud,
+    borderRadius: 8,
   },
   headerStyle:{
     marginStart: 24,
@@ -28,6 +31,9 @@ export const styles = StyleSheet.create({
     marginStart: 16,
     marginTop: 16,
     marginEnd: 16,
+    elevation: 16,
+    backgroundColor: theme.colors.backgroud,
+    borderRadius: 8,
   },
   InputText: {
     flexDirection: "row",

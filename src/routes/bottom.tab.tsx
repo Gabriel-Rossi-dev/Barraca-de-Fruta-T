@@ -5,11 +5,11 @@ import FruitHome from "../screen/Fruit/FruitHome";
 import { View, Image } from "react-native";
 import imagePath from "../constants/imagePath";
 import StackRoutes from "@react-navigation/native";
-import { SupplyStack } from "./supplyer.routs";
 import { styles } from "./styled";
 import { Ionicons } from "@expo/vector-icons";
 import theme from "../global/theme/theme";
 import { FruitStack } from "./fruits.routs";
+import { SupplyStack } from "./supplyer.routs";
 
 const Tab = createBottomTabNavigator();
 
