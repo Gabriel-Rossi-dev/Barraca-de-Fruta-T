@@ -12,7 +12,7 @@ import {
   TextInput,
   Alert,
 } from "react-native";
-import CardElevation from "../../../constants/cardElevation/CardElevation";
+import CardElevation from "../../../constants/CardElevationInput/CardElevationInput";
 
 function exitRegister(navigation: any) {
   Alert.alert(

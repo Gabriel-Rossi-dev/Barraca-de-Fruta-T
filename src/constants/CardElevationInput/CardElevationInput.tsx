@@ -12,7 +12,7 @@ interface CardElevationProps extends TextInputProps {
   onChange: any;
 }
 
-export default function CardElevation({nameIcon,placeholderText, onChange, ...props}: CardElevationProps) {
+export default function CardElevationInput({nameIcon,placeholderText, onChange, ...props}: CardElevationProps) {
   const [teste, setTeste] = useState<string>("");
   return (
     <View>

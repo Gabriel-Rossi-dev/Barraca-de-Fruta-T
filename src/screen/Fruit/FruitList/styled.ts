@@ -15,6 +15,9 @@ export const styles = StyleSheet.create({
     marginEnd:16
   },
   InputText: {
+    marginStart: 40,
+    marginTop: 40,
+    backgroundColor: theme.colors.primaryDark,
     
     flexDirection: 'row',
     color: theme.colors.black

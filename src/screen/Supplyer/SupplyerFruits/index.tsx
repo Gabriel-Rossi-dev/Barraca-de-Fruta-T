@@ -4,6 +4,8 @@ import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState } from "react";
 
 function exitRegister(navigation: any) {
   Alert.alert(
@@ -24,7 +26,17 @@ function exitRegister(navigation: any) {
 }
 
 export default function SupplyerName() {
+  const [fruitSupply, setfruitSupply] = useState('');
+  async function handleNameState() {
+    await AsyncStorage.setItem("fruitSupply", fruitSupply);
+  }
+  async function  getSupplyerData()  {
+    const nameValue = await AsyncStorage.getItem('nameSupply');
+    const cpfValue = await AsyncStorage.getItem('cpfSupply');
+    const phoneValue = await AsyncStorage.getItem('phoneSupply');
+  }
   const navigation: any = useNavigation();
+  getSupplyerData()
   return (
     <View>
       <TouchableOpacity
@@ -37,21 +49,27 @@ export default function SupplyerName() {
       />
       </TouchableOpacity>
       <View style={styles.ViewHeaderText}>
-        <Text style={styles.titleText}>Nome</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("SupplyerName")}>
+          <Text style={styles.titleText}>Nome</Text>
+        </TouchableOpacity>
         <Ionicons
           style={styles.chevronForward}
           name={"ios-chevron-forward"}
           size={36}
           color={theme.colors.lightGray}
         />
-        <Text style={styles.titleTextSecond}>CPF</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("SupplyerCPF")}>
+          <Text style={styles.titleTextSecond}>CPF</Text>
+        </TouchableOpacity>
         <Ionicons
           style={styles.chevronForward}
           name={"ios-chevron-forward"}
           size={36}
           color={theme.colors.lightGray}
         />
-        <Text style={styles.titleTextSecond}>Telefone</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("SupplyerPhone")}>
+          <Text style={styles.titleTextSecond}>Telefone</Text>
+        </TouchableOpacity>
         <Ionicons
           style={styles.chevronForward}
           name={"ios-chevron-forward"}

@@ -4,8 +4,9 @@ import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import {Alert} from 'react-native'
-
+import { Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useState } from "react";
 
 function exitRegister(navigation: any) {
   Alert.alert(
@@ -13,21 +14,28 @@ function exitRegister(navigation: any) {
     "Tem certeza que quer cancelar o cadastro do colaborador?  Você perderá todas as informações inseridas até aqui",
     [
       {
-        text: 'Não'
+        text: "Não",
       },
       {
-        text: 'Sim, cancelar', onPress: () => {navigation.navigate("SupplyerHome")}
-      }
-
+        text: "Sim, cancelar",
+        onPress: () => {
+          navigation.navigate("SupplyerHome");
+        },
+      },
     ]
-
   );
-
 }
 
-
 export default function SupplyerCPF() {
+  const [cpfSupply, setcpfSupply] = useState("");
+  async function handleCpfState() {
+    await AsyncStorage.setItem("cpfSupply", cpfSupply);
+  }
   const navigation: any = useNavigation();
+  async function getNameSupply() {
+    const nameValue = AsyncStorage.getItem("nameSupply");
+  }
+  getNameSupply();
   return (
     <View>
       <TouchableOpacity onPress={() => exitRegister(navigation)}>
@@ -38,8 +46,11 @@ export default function SupplyerCPF() {
           color={theme.colors.lightGray}
         />
       </TouchableOpacity>
+
       <View style={styles.ViewHeaderText}>
-        <Text style={styles.titleText}>Nome</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("SupplyerName")}>
+          <Text style={styles.titleText}>Nome</Text>
+        </TouchableOpacity>
         <Ionicons
           style={styles.chevronForward}
           name={"ios-chevron-forward"}
@@ -48,8 +59,10 @@ export default function SupplyerCPF() {
         />
         <Text style={styles.titleTextSecond}>CPF</Text>
       </View>
+
       <Text style={styles.titleSupplyer}>Digite o CPF do colaborador</Text>
       <TextInput
+        onChangeText={(text: any) => setcpfSupply(text)}
         style={styles.InputText}
         placeholder="000.000.000-00"
         placeholderTextColor={theme.colors.lightGray}
@@ -57,7 +70,10 @@ export default function SupplyerCPF() {
       />
       <TouchableOpacity
         style={styles.buttonNext}
-        onPress={() => navigation.navigate("SupplyerPhone")}
+        onPress={() => {
+          navigation.navigate("SupplyerPhone");
+          handleCpfState();
+        }}
       >
         <Text style={styles.buttonText}>Próximo</Text>
         <Ionicons

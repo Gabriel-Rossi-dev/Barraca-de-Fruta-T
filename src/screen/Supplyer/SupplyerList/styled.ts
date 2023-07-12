@@ -32,5 +32,8 @@ export const styles = StyleSheet.create({
     },
     marginTop: {
       paddingTop: 80
+    },
+    root: {
+      backgroundColor:theme.colors.backgroud
     }
 });

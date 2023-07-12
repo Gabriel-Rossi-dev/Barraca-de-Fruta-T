@@ -4,6 +4,8 @@ import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState } from "react";
 
 function exitRegister(navigation: any) {
   Alert.alert(
@@ -11,20 +13,26 @@ function exitRegister(navigation: any) {
     "Tem certeza que quer cancelar o cadastro do colaborador?  Você perderá todas as informações inseridas até aqui",
     [
       {
-        text: 'Não'
+        text: "Não",
       },
       {
-        text: 'Sim, cancelar', onPress: () => {navigation.navigate("SupplyerHome")}
-      }
-
+        text: "Sim, cancelar",
+        onPress: () => {
+          navigation.navigate("SupplyerHome");
+        },
+      },
     ]
-
   );
-
 }
 
 export default function SupplyerName() {
+  
   const navigation: any = useNavigation();
+  const [nameSupply, setnameSupply] = useState('');
+  async function handleNameState() {
+    await AsyncStorage.setItem("nameSupply", nameSupply);
+  }
+
   return (
     <View>
       <TouchableOpacity onPress={() => exitRegister(navigation)}>
@@ -38,13 +46,17 @@ export default function SupplyerName() {
       <Text style={styles.titleText}>Nome</Text>
       <Text style={styles.titleSupplyer}>Digite o nome do colaborador</Text>
       <TextInput
+        onChangeText={(text: any) => setnameSupply(text)}
         style={styles.InputText}
         placeholder="Nome"
         placeholderTextColor={theme.colors.lightGray}
       />
       <TouchableOpacity
         style={styles.buttonNext}
-        onPress={() => navigation.navigate("SupplyerCPF")}
+        onPress={() => {
+          navigation.navigate("SupplyerCPF");
+          handleNameState();
+        }}
       >
         <Text style={styles.buttonText}>Próximo</Text>
         <Ionicons

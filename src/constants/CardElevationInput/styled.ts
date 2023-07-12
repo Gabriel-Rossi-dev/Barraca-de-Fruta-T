@@ -3,9 +3,9 @@ import theme from "../../global/theme/theme";
 
 export const styles = StyleSheet.create({
   cardView: {
-    marginBottom: 16,
-    elevation: 16,
-    backgroundColor: theme.colors.backgroud,
+    marginBottom: 24,
+    elevation: 8,
+    backgroundColor: theme.colors.shape,
     borderRadius: 8,
     marginStart: 16,
     marginEnd: 16,
