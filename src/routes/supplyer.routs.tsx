@@ -8,6 +8,7 @@ import SupplyerFinish from "../screen/Supplyer/SupplyerFinish";
 import SupplyerList from "../screen/Supplyer/SupplyerList";
 
 import React from "react";
+import SupplyerInfo from "../screen/Supplyer/SupplyerInfo";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -60,6 +61,14 @@ export function SupplyStack() {
        <Screen
         name="SupplyerList"
         component={SupplyerList}
+        options={{
+          headerShown: false,
+        }}
+      />
+      
+      <Screen
+        name="SupplyerInfo"
+        component={SupplyerInfo}
         options={{
           headerShown: false,
         }}

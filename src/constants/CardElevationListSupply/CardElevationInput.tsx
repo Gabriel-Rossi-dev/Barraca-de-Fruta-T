@@ -11,11 +11,11 @@ interface CardElevationProps extends TextInputProps {
   nameIcon: any;
   placeholderText: string;
   onChange: any;
+  onPress: any;
 }
 
 export default function CardElevationListSupply({
   onChange,
-  ...props
 }: CardElevationProps) {
   const [teste, setTeste] = useState<string>("");
   const navigation: any = useNavigation();
@@ -27,21 +27,11 @@ export default function CardElevationListSupply({
         <Text style = {styles.textName}>Lorem ipsum</Text>
         <View style = {styles.rowCard}>
           <Ionicons style={styles.iconPerson} name={'person-outline'} size={24} />
-          <TextInput
-            style={styles.InputText}
-            placeholder={"000.000.000-00"}
-            placeholderTextColor={theme.colors.lightGray}
-            onChangeText={onChange}
-          />
+          <Text style = {styles.InputText}>000.000.000-00</Text>
         </View>
         <View style = {styles.rowCard}>
           <Ionicons style={styles.iconCall} name={'call-outline'} size={24} />
-          <TextInput
-            style={styles.InputText}
-            placeholder={'(00) 00000-0000'}
-            placeholderTextColor={theme.colors.lightGray}
-            onChangeText={onChange}
-          />
+          <Text style = {styles.InputText}>(00)00000-0000</Text>
         </View>
       </TouchableOpacity>
     </View>

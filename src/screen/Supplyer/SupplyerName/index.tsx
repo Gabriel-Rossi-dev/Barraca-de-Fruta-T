@@ -4,7 +4,7 @@ import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
 
 function exitRegister(navigation: any) {
@@ -26,11 +26,11 @@ function exitRegister(navigation: any) {
 }
 
 export default function SupplyerName() {
-  
   const navigation: any = useNavigation();
-  const [nameSupply, setnameSupply] = useState('');
+  const [nameSupply, setnameSupply] = useState("");
+
   async function handleNameState() {
-    await AsyncStorage.setItem("nameSupply", nameSupply);
+    await AsyncStorage.setItem("nameSupply", nameSupply); 
   }
 
   return (

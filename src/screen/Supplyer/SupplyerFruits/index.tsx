@@ -1,11 +1,17 @@
 import { View, Text, Alert } from "react-native";
 import { styles } from "./styled";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import {
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
+import { CheckBoxSupplyerFruits } from "../../../constants/CheckBoxSupplyerFruits/CheckBoxSupplyerFruits";
+import { Checkbox } from "react-native-paper";
 
 function exitRegister(navigation: any) {
   Alert.alert(
@@ -26,30 +32,36 @@ function exitRegister(navigation: any) {
 }
 
 export default function SupplyerName() {
-  const [fruitSupply, setfruitSupply] = useState('');
+  const [fruitSupply, setfruitSupply] = useState("");
+
   async function handleNameState() {
     await AsyncStorage.setItem("fruitSupply", fruitSupply);
   }
-  async function  getSupplyerData()  {
-    const nameValue = await AsyncStorage.getItem('nameSupply');
-    const cpfValue = await AsyncStorage.getItem('cpfSupply');
-    const phoneValue = await AsyncStorage.getItem('phoneSupply');
+  async function getSupplyerData() {
+    const nameValue = await AsyncStorage.getItem("nameSupply");
+    const cpfValue = await AsyncStorage.getItem("cpfSupply");
+    const phoneValue = await AsyncStorage.getItem("phoneSupply");
+
+    console.log(nameValue);
+    console.log(cpfValue);
+    console.log(phoneValue);
   }
   const navigation: any = useNavigation();
-  getSupplyerData()
+
+  getSupplyerData();
+
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => exitRegister(navigation)}>
-      <Ionicons
-        style={styles.exit}
-        name={"ios-close"}
-        size={36}
-        color={theme.colors.lightGray}
-      />
+      <TouchableOpacity onPress={() => exitRegister(navigation)}>
+        <Ionicons
+          style={styles.exit}
+          name={"ios-close"}
+          size={36}
+          color={theme.colors.lightGray}
+        />
       </TouchableOpacity>
       <View style={styles.ViewHeaderText}>
-      <TouchableOpacity onPress={() => navigation.navigate("SupplyerName")}>
+        <TouchableOpacity onPress={() => navigation.navigate("SupplyerName")}>
           <Text style={styles.titleText}>Nome</Text>
         </TouchableOpacity>
         <Ionicons
@@ -77,19 +89,21 @@ export default function SupplyerName() {
           color={theme.colors.lightGray}
         />
         <Text style={styles.titleTextPrimary}>Frutas</Text>
-        
       </View>
       <Text style={styles.titleSupplyer}>
         Escolha as frutas que esse fornecedor nos fornece
       </Text>
+      <ScrollView>
+        <CheckBoxSupplyerFruits onChange={styles.titleSupplyer}/>
+        <CheckBoxSupplyerFruits onChange={styles.titleSupplyer}/>
+        
+      </ScrollView>
       <TouchableOpacity
         style={styles.addSupplier}
-        onPress={() => navigation.navigate('SupplyerFinish')}
-        
+        onPress={() => navigation.navigate("SupplyerFinish")}
       >
         <Text style={styles.textSupply}>Cadastrar Fornecedor</Text>
       </TouchableOpacity>
-      
     </View>
   );
 }

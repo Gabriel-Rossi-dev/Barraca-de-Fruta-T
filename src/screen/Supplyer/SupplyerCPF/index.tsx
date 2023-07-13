@@ -32,8 +32,9 @@ export default function SupplyerCPF() {
     await AsyncStorage.setItem("cpfSupply", cpfSupply);
   }
   const navigation: any = useNavigation();
+
   async function getNameSupply() {
-    const nameValue = AsyncStorage.getItem("nameSupply");
+    const nameValue = await AsyncStorage.getItem("nameSupply");
   }
   getNameSupply();
   return (

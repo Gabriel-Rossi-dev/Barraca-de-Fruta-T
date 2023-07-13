@@ -89,5 +89,22 @@ export const styles = StyleSheet.create({
   textSupply: {
     fontSize: 18,
     color: theme.colors.shape
+  },
+  allFruitsRetangle: {
+    height:24,
+    width:24,
+    borderColor: theme.colors.black,
+    borderRadius: 8,
+    marginStart: 16,
+    marginTop:24,
+    borderWidth: 1
+  },
+  viewRow:{
+    flexDirection: 'row',
+    alignItems:'center',
+  },
+  textFruitsList: {
+    marginStart: 16,
+    marginTop:24,
   }
 });

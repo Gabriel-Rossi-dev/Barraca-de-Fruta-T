@@ -27,11 +27,12 @@ function exitRegister(navigation: any) {
 export default function SupplyerName() {
   const navigation: any = useNavigation();
   const [phoneSupply, setphoneSupply] = useState("");
-  async function handleCpfState() {
+
+  async function handlePhoneState() {
     await AsyncStorage.setItem("phoneSupply", phoneSupply);
   }
   async function getCpfSupply() {
-    const cpfValue = AsyncStorage.getItem("cpfSupply");
+    const cpfValue = await AsyncStorage.getItem("cpfSupply");
   }
   getCpfSupply();
   return (
@@ -72,7 +73,7 @@ export default function SupplyerName() {
       <TextInput
         onChangeText={(text: any) => setphoneSupply(text)}
         style={styles.InputText}
-        placeholder="000.000.000-00"
+        placeholder="(00)00000-0000"
         placeholderTextColor={theme.colors.lightGray}
         keyboardType="numeric"
       />
@@ -80,7 +81,7 @@ export default function SupplyerName() {
         style={styles.buttonNext}
         onPress={() => {
           navigation.navigate("SupplyerFruits");
-          handleCpfState();
+          handlePhoneState();
         }}
       >
         <Text style={styles.buttonText}>Próximo</Text>

@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   InputText: {
     fontSize: 13,
     flexDirection: "row",
-    color: theme.colors.black,
+    color: theme.colors.lightGray,
   },
   rowCard:{
     flexDirection: 'row'
