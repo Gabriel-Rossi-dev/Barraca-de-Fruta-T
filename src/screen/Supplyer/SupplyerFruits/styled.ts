@@ -106,5 +106,9 @@ export const styles = StyleSheet.create({
   textFruitsList: {
     marginStart: 16,
     marginTop:24,
+  },
+  selectedButton: {
+    color: theme.colors.primary
+    
   }
 });
