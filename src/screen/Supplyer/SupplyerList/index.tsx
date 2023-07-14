@@ -9,6 +9,8 @@ import { FlatList, ScrollView } from "react-native-gesture-handler";
 export default function SupplyerInfo() {
   const [teste, setTeste] = useState("");
   const navigation: any = useNavigation();
+
+  
   return (
     <View style={styles.root}>
       <View style={styles.marginTop}>

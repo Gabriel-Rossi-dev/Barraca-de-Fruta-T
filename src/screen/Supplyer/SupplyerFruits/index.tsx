@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
 import { CheckBoxSupplyerFruits } from "../../../constants/CheckBoxSupplyerFruits/CheckBoxSupplyerFruits";
+import { Item } from "react-native-paper/lib/typescript/src/components/Drawer/Drawer";
 
 
 function exitRegister(navigation: any) {
@@ -32,12 +33,13 @@ function exitRegister(navigation: any) {
   );
 }
 
-export default function SupplyerName() {
+export default function SupplyerFruits() {
   
 
-  let nameValue;
-  let cpfValue;
-  let phoneValue;
+  let nameValue: string;
+  let cpfValue : string;
+  let phoneValue: string;
+  let supplyerList: [string];
 
   async function handleNameState() {
     const [fruitSupply, setfruitSupply] = useState("");
@@ -48,7 +50,7 @@ export default function SupplyerName() {
     nameValue = await AsyncStorage.getItem("nameSupply");
     cpfValue = await AsyncStorage.getItem("cpfSupply");
     phoneValue = await AsyncStorage.getItem("phoneSupply");
-
+    supplyerList = await  AsyncStorage.getItem('listSupplyer')
     // console.log(nameValue);
     // console.log(cpfValue);
     // console.log(phoneValue);
@@ -56,7 +58,7 @@ export default function SupplyerName() {
 
   async function handleFinish() {
     let filterlistFruit = listFruit.filter((item) => item.isSelected == true);
-    let listSupplyer = await AsyncStorage.getItem('listSupplyer')
+    let listSupplyer = supplyerList
     const supplyer = {
       name: nameValue,
       cpf: cpfValue,
@@ -85,6 +87,7 @@ export default function SupplyerName() {
   
   getSupplyerData();
 
+  
   return (
     <View>
       <TouchableOpacity onPress={() => exitRegister(navigation)}>
@@ -135,7 +138,7 @@ export default function SupplyerName() {
         renderItem={({ item }) => (
           <CheckBoxSupplyerFruits
             key={item.name}
-            style={item.isSelected ? styles.selectedButton : undefined}
+            style={item.isSelected ? {backgroundColor: theme.colors.primary}:undefined}
             onPress={() => {
               item.isSelected = !item.isSelected;
               console.log("item ---------------------->", item);

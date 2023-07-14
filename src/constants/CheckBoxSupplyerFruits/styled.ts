@@ -28,4 +28,8 @@ export const styles = StyleSheet.create({
     marginTop: 24,
     borderWidth: 1,
   },
+  selectedButton: {
+    color: theme.colors.primary
+    
+  }
 });
