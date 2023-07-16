@@ -13,7 +13,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
 import { CheckBoxSupplyerFruits } from "../../../constants/CheckBoxSupplyerFruits/CheckBoxSupplyerFruits";
 import { Item } from "react-native-paper/lib/typescript/src/components/Drawer/Drawer";
-
+import Checkbox from "expo-checkbox";
 
 function exitRegister(navigation: any) {
   Alert.alert(
@@ -34,43 +34,11 @@ function exitRegister(navigation: any) {
 }
 
 export default function SupplyerFruits() {
-  
-
   let nameValue: string;
-  let cpfValue : string;
+  let cpfValue: string;
   let phoneValue: string;
-  let supplyerList: [string];
-
-  async function handleNameState() {
-    const [fruitSupply, setfruitSupply] = useState("");
-    await AsyncStorage.setItem("fruitSupply", fruitSupply);
-  }
-
-  async function getSupplyerData() {
-    nameValue = await AsyncStorage.getItem("nameSupply");
-    cpfValue = await AsyncStorage.getItem("cpfSupply");
-    phoneValue = await AsyncStorage.getItem("phoneSupply");
-    supplyerList = await  AsyncStorage.getItem('listSupplyer')
-    // console.log(nameValue);
-    // console.log(cpfValue);
-    // console.log(phoneValue);
-  }
-
-  async function handleFinish() {
-    let filterlistFruit = listFruit.filter((item) => item.isSelected == true);
-    let listSupplyer = supplyerList
-    const supplyer = {
-      name: nameValue,
-      cpf: cpfValue,
-      phone: phoneValue,
-      fruits: filterlistFruit,
-    };
-    listSupplyer.push(supplyer)
-    await AsyncStorage.setItem("listSupplyer", listSupplyer);
-    console.log('---------------->', JSON.stringify(supplyer))
-    setfruitSupply(listFruit)
-  }
-  const navigation: any = useNavigation();
+  let listSupplyer: any = [];
+  let supplyerList;
 
   let listFruit = [
     { name: "Banana", isSelected: false },
@@ -84,10 +52,41 @@ export default function SupplyerFruits() {
     { name: "Melancia", isSelected: false },
   ];
 
-  
+  async function handleNameState() {
+    const [fruitSupply, setfruitSupply] = useState("");
+    await AsyncStorage.setItem("fruitSupply", fruitSupply);
+  }
+
+  async function getSupplyerData() {
+    nameValue = await AsyncStorage.getItem("nameSupply");
+    cpfValue = await AsyncStorage.getItem("cpfSupply");
+    phoneValue = await AsyncStorage.getItem("phoneSupply");
+    supplyerList = await AsyncStorage.getItem("listSupplyer");
+    console.log(nameValue);
+    console.log(cpfValue);
+    console.log(phoneValue);
+  }
+
+  async function handleFinish() {
+    let filterlistFruit = listFruit.filter((item) => item.isSelected == true);
+    listSupplyer = (await AsyncStorage.getItem("listSupplyer"))
+      ? await AsyncStorage.getItem("listSupplyer")
+      : [];
+    const supplyer = {
+      name: nameValue,
+      cpf: cpfValue,
+      phone: phoneValue,
+      fruits: filterlistFruit,
+    };
+    console.log("---------------->", JSON.stringify(supplyer));
+    listSupplyer.push(supplyer);
+    await AsyncStorage.setItem("listSupplyer", listSupplyer);
+    console.log(`{}{}{}{}{} ${listSupplyer}`);
+  }
+  const navigation: any = useNavigation();
+
   getSupplyerData();
 
-  
   return (
     <View>
       <TouchableOpacity onPress={() => exitRegister(navigation)}>
@@ -136,22 +135,30 @@ export default function SupplyerFruits() {
         data={listFruit}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <CheckBoxSupplyerFruits
-            key={item.name}
-            style={item.isSelected ? {backgroundColor: theme.colors.primary}:undefined}
-            onPress={() => {
-              item.isSelected = !item.isSelected;
-              console.log("item ---------------------->", item);
-            }}
-            name={item.name}
-          />
+          <View style={styles.viewRow}>
+            <TouchableOpacity
+              onPress={() => {
+                item.isSelected = !item.isSelected;
+
+                console.log(item.isSelected);
+              }}
+              style={
+                item.isSelected
+                  ? styles.allFruitsRetangleSelected
+                  : styles.allFruitsRetangle
+              }
+            ></TouchableOpacity>
+            <Text style={styles.textFruitsList}>{item.name}</Text>
+          </View>
         )}
       ></FlatList>
 
       <TouchableOpacity
         style={styles.addSupplier}
-        // onPress={() => navigation.navigate("SupplyerFinish")}
-        onPress={() => handleFinish()}
+        onPress={() => {
+          handleFinish();
+          navigation.navigate("SupplyerFinish", nameValue, supplyer);
+        }}
       >
         <Text style={styles.textSupply}>Cadastrar Fornecedor</Text>
       </TouchableOpacity>
