@@ -1,13 +1,10 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { View, Alert, Image, Text } from "react-native";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styled";
 import theme from "../../../global/theme/theme";
-import { styled } from "styled-components";
-import { Routes } from "../../../routes/bottom.tab";
-
 function exitRegister(navigation: any) {
   Alert.alert(
     "Cancelar Cadastro",

@@ -10,10 +10,7 @@ import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useState } from "react";
-import { CheckBoxSupplyerFruits } from "../../../constants/CheckBoxSupplyerFruits/CheckBoxSupplyerFruits";
-import { Item } from "react-native-paper/lib/typescript/src/components/Drawer/Drawer";
-import Checkbox from "expo-checkbox";
+import { useEffect, useState } from "react";
 
 function exitRegister(navigation: any) {
   Alert.alert(
@@ -34,13 +31,12 @@ function exitRegister(navigation: any) {
 }
 
 export default function SupplyerFruits() {
-  let nameValue: string;
-  let cpfValue: string;
-  let phoneValue: string;
-  let listSupplyer: any = [];
-  let supplyerList;
-
-  let listFruit = [
+  const [nameValue, setNameValue] = useState("");
+  const [cpfValue, setCpfValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
+  const [listSupplyer, setListSupplyer] = useState([]);
+  const [fruitSupply, setFruitSupply] = useState("");
+  const [listFruit, setListFruit] = useState([
     { name: "Banana", isSelected: false },
     { name: "Maça", isSelected: false },
     { name: "Laranja", isSelected: false },
@@ -50,42 +46,38 @@ export default function SupplyerFruits() {
     { name: "Pera", isSelected: false },
     { name: "Kiwi", isSelected: false },
     { name: "Melancia", isSelected: false },
-  ];
+  ]);
 
-  async function handleNameState() {
-    const [fruitSupply, setfruitSupply] = useState("");
-    await AsyncStorage.setItem("fruitSupply", fruitSupply);
-  }
+  const navigation: any = useNavigation();
 
-  async function getSupplyerData() {
-    nameValue = await AsyncStorage.getItem("nameSupply");
-    cpfValue = await AsyncStorage.getItem("cpfSupply");
-    phoneValue = await AsyncStorage.getItem("phoneSupply");
-    supplyerList = await AsyncStorage.getItem("listSupplyer");
-    console.log(nameValue);
-    console.log(cpfValue);
-    console.log(phoneValue);
-  }
+  useEffect(() => {
+    async function getSupplyerData() {
+      const name = await AsyncStorage.getItem("nameSupply");
+      const cpf = await AsyncStorage.getItem("cpfSupply");
+      const phone = await AsyncStorage.getItem("phoneSupply");
+
+      setNameValue(name || "");
+      setCpfValue(cpf || "");
+      setPhoneValue(phone || "");
+
+      const supplyerData = await AsyncStorage.getItem("listSupplyer");
+      setListSupplyer(supplyerData ? JSON.parse(supplyerData) : []);
+    }
+    getSupplyerData();
+  }, []);
 
   async function handleFinish() {
-    let filterlistFruit = listFruit.filter((item) => item.isSelected == true);
-    listSupplyer = (await AsyncStorage.getItem("listSupplyer"))
-      ? await AsyncStorage.getItem("listSupplyer")
-      : [];
+    const filterlistFruit = listFruit.filter((item) => item.isSelected);
     const supplyer = {
       name: nameValue,
       cpf: cpfValue,
       phone: phoneValue,
       fruits: filterlistFruit,
     };
-    console.log("---------------->", JSON.stringify(supplyer));
-    listSupplyer.push(supplyer);
-    await AsyncStorage.setItem("listSupplyer", listSupplyer);
-    console.log(`{}{}{}{}{} ${listSupplyer}`);
-  }
-  const navigation: any = useNavigation();
+    setListSupplyer((prevList) => [...prevList, supplyer]);
 
-  getSupplyerData();
+    await AsyncStorage.setItem("listSupplyer", JSON.stringify(listSupplyer));
+  }
 
   return (
     <View>
@@ -134,13 +126,18 @@ export default function SupplyerFruits() {
       <FlatList
         data={listFruit}
         keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={styles.viewRow}>
             <TouchableOpacity
               onPress={() => {
-                item.isSelected = !item.isSelected;
-
-                console.log(item.isSelected);
+                setListFruit((prevState) => {
+                  const newListFruit = [...prevState];
+                  newListFruit[index] = {
+                    ...newListFruit[index],
+                    isSelected: !newListFruit[index].isSelected,
+                  };
+                  return newListFruit;
+                });
               }}
               style={
                 item.isSelected
@@ -157,7 +154,7 @@ export default function SupplyerFruits() {
         style={styles.addSupplier}
         onPress={() => {
           handleFinish();
-          navigation.navigate("SupplyerFinish", nameValue, supplyer);
+          navigation.navigate("SupplyerFinish", nameValue, listSupplyer);
         }}
       >
         <Text style={styles.textSupply}>Cadastrar Fornecedor</Text>
