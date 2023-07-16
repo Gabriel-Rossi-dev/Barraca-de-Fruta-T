@@ -15,6 +15,8 @@ export const styles = StyleSheet.create({
     color: theme.colors.primary,
   },
   titleText: {
+    
+    marginBottom: 150,
     marginTop: 26,
     marginStart: 16,
     fontSize: 13,
@@ -60,7 +62,6 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     width: 328,
     height: 40,
-    marginTop: 150,
     paddingStart: 8,
     paddingEnd: 8,
     alignItems: "center",

@@ -41,12 +41,12 @@ export const styles = StyleSheet.create({
     color: theme.colors.darkGray,
   },
   InputText: {
+    marginBottom: 320,
     fontSize: 24,
     marginTop: 24,
     marginStart: 16,
   },
   buttonNext: {
-    marginTop: 320,
     marginBottom: 40,
     borderColor: theme.colors.primary,
     height: 40,

@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     marginEnd: 16,
   },
   chevronForwardPrimary: {
-    marginTop:2,
+    marginTop: 2,
     fontSize: 24,
     color: theme.colors.primary,
   },
@@ -28,26 +28,25 @@ export const styles = StyleSheet.create({
     color: theme.colors.darkGray,
   },
   InputText: {
+    marginBottom: 320,
     fontSize: 24,
     marginTop: 24,
     marginStart: 16,
   },
   buttonNext: {
-    marginTop: 320,
     marginBottom: 40,
     borderColor: theme.colors.primary,
     height: 40,
-    marginStart:20,
-    marginEnd:20,
+    marginStart: 20,
+    marginEnd: 20,
     borderRadius: 20,
     borderWidth: 1.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
   },
   buttonText: {
     color: theme.colors.primary,
     fontSize: 13,
-
-  }
+  },
 });
