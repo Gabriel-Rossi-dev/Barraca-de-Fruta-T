@@ -10,9 +10,10 @@ interface Props extends RectButtonProps {
   name: string;
   onPress: () => void;
   style?: object
+  isSelected: boolean
 }
 
-export function CheckBoxSupplyerFruits({name, onPress, style, ...rest}: Props) {
+export function CheckBoxSupplyerFruits({name, onPress, style, isSelected, ...rest  }: Props) {
   const navigation: any = useNavigation();
   return (
     <View>
@@ -20,7 +21,7 @@ export function CheckBoxSupplyerFruits({name, onPress, style, ...rest}: Props) {
         <TouchableOpacity
         onPress={onPress} 
         {...rest}
-        style={[styles.allFruitsRetangle, style,]}></TouchableOpacity>
+        style={isSelected ? styles.allFruitsRetangleSelected : styles.allFruitsRetangle}></TouchableOpacity>
         <Text style={styles.textFruitsList}>{name}</Text>
       </View>
     </View>

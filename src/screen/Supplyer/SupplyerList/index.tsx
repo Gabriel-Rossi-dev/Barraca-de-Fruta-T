@@ -1,16 +1,34 @@
 import { View } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import CardElevationInput from "../../../constants/CardElevationInput/CardElevationInput";
 import { styles } from "./styled";
 import CardElevationListSupply from "../../../constants/CardElevationListSupply/CardElevationInput";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function SupplyerInfo() {
   const [teste, setTeste] = useState("");
   const navigation: any = useNavigation();
+  let supplyerList: any;
 
-  
+  async function getSupplyerData() {
+    supplyerList = await AsyncStorage.getItem("listSupplyer");
+    console.log(`{}{}{}{}{} ${supplyerList}`)
+    // console.log(supplyerList)
+  }
+
+  // useEffect(() => {
+  //   getSupplyerData();
+
+  //   return () => {
+  //     supplyerList = JSON.parse(supplyerList);
+  //     console.log(supplyerList);
+  //   };
+  // }, []);
+
+ 
+  getSupplyerData()
   return (
     <View style={styles.root}>
       <View style={styles.marginTop}>
@@ -22,36 +40,20 @@ export default function SupplyerInfo() {
           }}
         />
       </View>
-      <ScrollView showsHorizontalScrollIndicator={false}>
-        <View>
+      <FlatList
+        data={supplyerList}
+        renderItem={({ item }) => (
           <CardElevationListSupply
-            key={1}
-            nameIcon={"search-outline"}
-            placeholderText="Fornecedor"
+            onPress={() => {}}
+            // key={(item) => {
+            //   item.cpf
+            // }}
+            name={item.name}
+            cpf={item.cpf}
+            phone={item.phone}
           />
-          <CardElevationListSupply
-            key={2}
-            nameIcon={"search-outline"}
-            placeholderText="Fornecedor"
-          />
-          <CardElevationListSupply
-            nameIcon={"search-outline"}
-            placeholderText="Fornecedor"
-          />
-          <CardElevationListSupply
-            nameIcon={"search-outline"}
-            placeholderText="Fornecedor"
-          />
-          <CardElevationListSupply
-            nameIcon={"search-outline"}
-            placeholderText="Fornecedor"
-          />
-          <CardElevationListSupply
-            nameIcon={"search-outline"}
-            placeholderText="Fornecedor"
-          />
-        </View>
-      </ScrollView>
+        )}
+      />
     </View>
   );
 }

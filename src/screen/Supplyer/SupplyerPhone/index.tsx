@@ -34,6 +34,11 @@ export default function SupplyerName() {
   async function getCpfSupply() {
     const cpfValue = await AsyncStorage.getItem("cpfSupply");
   }
+  function verifyIfIsFilled() {
+    if (phoneSupply.length < 11 || phoneSupply.length > 11) {
+      Alert.alert("Telefone inválido", "Preencha o telefone do fornecedor");
+    } else navigation.navigate("SupplyerFruits");
+  }
   getCpfSupply();
   return (
     <View>
@@ -80,7 +85,7 @@ export default function SupplyerName() {
       <TouchableOpacity
         style={styles.buttonNext}
         onPress={() => {
-          navigation.navigate("SupplyerFruits");
+          verifyIfIsFilled();
           handlePhoneState();
         }}
       >

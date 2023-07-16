@@ -30,7 +30,12 @@ export default function SupplyerName() {
   const [nameSupply, setnameSupply] = useState("");
 
   async function handleNameState() {
-    await AsyncStorage.setItem("nameSupply", nameSupply); 
+    await AsyncStorage.setItem("nameSupply", nameSupply);
+  }
+  function verifyIfIsFilled() {
+    if (nameSupply != "") {
+      navigation.navigate("SupplyerCPF");
+    } else Alert.alert("Nome vazio", "Preencha o nome do fornecedor");
   }
 
   return (
@@ -54,8 +59,8 @@ export default function SupplyerName() {
       <TouchableOpacity
         style={styles.buttonNext}
         onPress={() => {
-          navigation.navigate("SupplyerCPF");
           handleNameState();
+          verifyIfIsFilled();
         }}
       >
         <Text style={styles.buttonText}>Próximo</Text>

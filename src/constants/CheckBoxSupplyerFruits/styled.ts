@@ -11,6 +11,14 @@ export const styles = StyleSheet.create({
     marginTop: 24,
     borderWidth: 1,
   },
+  allFruitsRetangleSelected: {
+    height: 24,
+    width: 24,
+    backgroundColor: theme.colors.primary,
+    borderRadius: 8,
+    marginStart: 24,
+    marginTop: 24,
+  },
   viewRow: {
     flexDirection: "row",
     alignItems: "center",

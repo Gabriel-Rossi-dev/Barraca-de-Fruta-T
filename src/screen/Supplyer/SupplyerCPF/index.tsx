@@ -36,6 +36,11 @@ export default function SupplyerCPF() {
   async function getNameSupply() {
     const nameValue = await AsyncStorage.getItem("nameSupply");
   }
+  function verifyIfIsFilled() {
+    if (cpfSupply.length < 11 || cpfSupply.length >11) {
+      Alert.alert("CPF inválido", "Preencha o cpf do fornecedor");
+    } else navigation.navigate("SupplyerPhone");
+  }
   getNameSupply();
   return (
     <View>
@@ -72,7 +77,7 @@ export default function SupplyerCPF() {
       <TouchableOpacity
         style={styles.buttonNext}
         onPress={() => {
-          navigation.navigate("SupplyerPhone");
+          verifyIfIsFilled();
           handleCpfState();
         }}
       >
