@@ -2,8 +2,6 @@ import { View, Text, Alert } from "react-native";
 import { styles } from "./styled";
 import {
   FlatList,
-  ScrollView,
-  TextInput,
   TouchableOpacity,
 } from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
@@ -31,6 +29,7 @@ function exitRegister(navigation: any) {
 }
 
 export default function SupplyerFruits() {
+  const [supplyInfo, setSupplyInfo] = useState([]);
   const [nameValue, setNameValue] = useState("");
   const [cpfValue, setCpfValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
@@ -76,7 +75,19 @@ export default function SupplyerFruits() {
     };
     setListSupplyer((prevList) => [...prevList, supplyer]);
 
-    await AsyncStorage.setItem("listSupplyer", JSON.stringify(listSupplyer));
+    try {
+      await AsyncStorage.setItem(
+        "listSupplyer",
+        JSON.stringify([...listSupplyer, supplyer])
+      );
+
+      const supplyerInfo = await AsyncStorage.getItem("listSupplyer");
+      console.log("SUPPLYER INFO", supplyerInfo);
+      const testeList = JSON.stringify(listSupplyer);
+      setSupplyInfo(JSON.parse(testeList));
+    } catch (error) {
+      console.error("Error:", error);
+    }
   }
 
   return (
@@ -154,7 +165,7 @@ export default function SupplyerFruits() {
         style={styles.addSupplier}
         onPress={() => {
           handleFinish();
-          navigation.navigate("SupplyerFinish", nameValue, listSupplyer);
+          navigation.navigate("SupplyerFinish", nameValue, supplyInfo);
         }}
       >
         <Text style={styles.textSupply}>Cadastrar Fornecedor</Text>

@@ -17,8 +17,6 @@ interface CardElevationProps extends TextInputProps {
 export default function CardElevationListSupply({
   onPress,name, cpf, phone
 }: CardElevationProps) {
-  const [teste, setTeste] = useState<string>("");
-  const navigation: any = useNavigation();
   return (
     <View>
       <TouchableOpacity style={styles.cardView}

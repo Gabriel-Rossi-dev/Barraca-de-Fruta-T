@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     color: theme.colors.darkGray,
   },
   InputText: {
+    
     marginBottom: 320,
     fontSize: 24,
     marginTop: 24,
