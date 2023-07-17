@@ -15,6 +15,7 @@ export default function SupplyerInfo() {
     async function getSupplyerData() {
       const supplyerData = await AsyncStorage.getItem("listSupplyer");
       setSupplyInfo(supplyerData ? JSON.parse(supplyerData) : []);
+      console.log("CONSOLE LIST ---- ", supplyInfo);
     }
     getSupplyerData();
   }, []);
