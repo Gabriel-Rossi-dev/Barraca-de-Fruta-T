@@ -5,8 +5,12 @@ import { styles } from "./styled";
 import CardElevationListSupply from "../../../constants/CardElevationListSupply/CardElevationInput";
 import { FlatList } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SupplyerInfo() {
+
+  const navigation: any = useNavigation();
+  
   const [supplyInfo, setSupplyInfo] = useState<
     { name: string; cpf: string; phone: string; listFruits: [string] }[]
   >([]);
@@ -15,7 +19,6 @@ export default function SupplyerInfo() {
     async function getSupplyerData() {
       const supplyerData = await AsyncStorage.getItem("listSupplyer");
       setSupplyInfo(supplyerData ? JSON.parse(supplyerData) : []);
-      console.log("CONSOLE LIST ---- ", supplyInfo);
     }
     getSupplyerData();
   }, []);
@@ -32,9 +35,11 @@ export default function SupplyerInfo() {
       <FlatList
         style={{ paddingBottom: 50 }}
         data={supplyInfo}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <CardElevationListSupply
-            onPress={() => {}}
+            onPress={() => {
+              navigation.navigate("SupplyInfo", item, index);
+            }}
             key={item.cpf}
             name={item.name}
             cpf={item.cpf}

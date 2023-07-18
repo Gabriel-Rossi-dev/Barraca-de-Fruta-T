@@ -77,7 +77,6 @@ export default function SupplyerFruits() {
     );
 
     const supplyerInfo = await AsyncStorage.getItem("listSupplyer");
-    console.log("SUPPLYER INFO", supplyerInfo);
     const testeList = JSON.stringify(listSupplyer);
     setSupplyInfo(JSON.parse(testeList));
   }
@@ -135,12 +134,8 @@ export default function SupplyerFruits() {
               onPress={() => {
                 setListFruit((prevState) => {
                   const newListFruit = [...prevState];
-                  newListFruit[index] = {
-                    ...newListFruit[index],
-                    isSelected: !newListFruit[index].isSelected,
-                  };
-                  return newListFruit;
-                });
+                  newListFruit[index] = {...newListFruit[index], isSelected: !newListFruit[index].isSelected,};
+                  return newListFruit;});
               }}
               style={
                 item.isSelected

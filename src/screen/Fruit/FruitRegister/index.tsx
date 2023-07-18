@@ -29,16 +29,9 @@ export default function FruitRegister() {
   const navigation: any = useNavigation();
   const [nameFruit, setnameFruit] = useState("");
   const [priceWeight, setpriceWeight] = useState("");
-  const [amount, setamount] = useState("");
+  const [amount, setAmount] = useState("");
   const [nameSupply, setnameSupply] = useState("");
-  const [fruitInfo, setFruitInfo] = useState<
-    {
-      nameFruit: string;
-      priceWeight: string;
-      amount: string;
-      nameSupply: string;
-    }[]
-  >([]);
+  const [fruitInfo, setFruitInfo] = useState([]);
 
   useEffect(() => {
     async function getFruitsData() {
@@ -49,7 +42,7 @@ export default function FruitRegister() {
 
       setnameFruit(nameFruit || "");
       setpriceWeight(priceWeight || "");
-      setamount(amount || "");
+      setAmount(amount || "");
       setnameSupply(nameSupply || "");
 
       const supplyerData = await AsyncStorage.getItem("fruitInfo");
@@ -73,7 +66,6 @@ export default function FruitRegister() {
     );
 
     const supplyerInfo = await AsyncStorage.getItem("fruitInfo");
-    console.log("SUPPLYER INFO", supplyerInfo);
     const testeList = JSON.stringify(fruitInfo);
     setFruitInfo(JSON.parse(testeList));
   }
@@ -105,7 +97,7 @@ export default function FruitRegister() {
       <CardElevation
         nameIcon={"server-outline"}
         placeholderText="Quantidade no estoque"
-        onChange={(amount: any) => setamount(amount)}
+        onChange={(amount: any) => setAmount(amount)}
       />
       <CardElevation
         nameIcon={"people-outline"}

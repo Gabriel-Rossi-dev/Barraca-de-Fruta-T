@@ -26,7 +26,6 @@ function exitRegister(navigation: any) {
 export default function SupplyerFinish() {
   const route = useRoute();
   const nameSupplyer = route.params;
-  console.log("--------------------->", nameSupplyer);
   const navigation: any = useNavigation();
   return (
     <View>

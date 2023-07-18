@@ -5,8 +5,10 @@ import { styles } from "./styled";
 import { FlatList } from "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import CardElevationListFruits from "../../../constants/CardElevationListFruits/CardElevationInput";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SupplyerInfo() {
+  const navigation: any = useNavigation();
   const [fruitInfo, setFruitInfo] = useState<
     {
       nameFruit: string;
@@ -19,9 +21,7 @@ export default function SupplyerInfo() {
   useEffect(() => {
     async function getFruitsData() {
       const fruitData = await AsyncStorage.getItem("fruitInfo");
-      setFruitInfo(fruitData ? JSON.parse(fruitData) : [])
-      console.log("CONSOLE LIST ---- ", fruitInfo);
-
+      setFruitInfo(fruitData ? JSON.parse(fruitData) : []);
     }
     getFruitsData();
   }, []);
@@ -38,7 +38,7 @@ export default function SupplyerInfo() {
       <FlatList
         style={{ paddingBottom: 50 }}
         data={fruitInfo}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <CardElevationListFruits
             onPress={() => {}}
             key={item.nameFruit}

@@ -1,18 +1,8 @@
-
 import { styles } from "./styled";
 import { Ionicons } from "@expo/vector-icons";
 import theme from "../../../global/theme/theme";
-import { useNavigation } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Alert,
-} from "react-native";
-import CardElevation from "../../../constants/CardElevationInput/CardElevationInput";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { Text, TouchableOpacity, View, Alert } from "react-native";
 
 function exitRegister(navigation: any) {
   Alert.alert(
@@ -33,6 +23,9 @@ function exitRegister(navigation: any) {
 }
 
 export default function FruitRegister() {
+  
+  const route = useRoute();
+  const index = route.params;
   const navigation: any = useNavigation();
   return (
     <View>
@@ -47,7 +40,6 @@ export default function FruitRegister() {
           />
         </TouchableOpacity>
       </View>
-      
     </View>
   );
 }
