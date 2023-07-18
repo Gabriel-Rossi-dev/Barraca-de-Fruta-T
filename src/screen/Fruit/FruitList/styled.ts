@@ -3,22 +3,20 @@ import theme from "../../../global/theme/theme";
 
 export const styles = StyleSheet.create({
   viewText: {
-    elevation: 5,
     flexDirection: 'row',
     height: 56,
     paddingStart: 24,
     alignItems: 'center',
   },
   textSupply: {
+    elevation: 16,
+    backgroundColor: theme.colors.backgroud,
+    borderRadius: 8,
     marginStart: 16,
     marginTop: 80,
     marginEnd:16
   },
   InputText: {
-    marginStart: 40,
-    marginTop: 40,
-    backgroundColor: theme.colors.primaryDark,
-    
     flexDirection: 'row',
     color: theme.colors.black
   },
@@ -31,5 +29,13 @@ export const styles = StyleSheet.create({
   },
     iconSearch:{
       marginEnd: 16  
+    },
+    marginTop: {
+      paddingTop: 80
+    },
+    root: {
+      backgroundColor:theme.colors.backgroud,
+      marginBottom:150,
+      
     }
 });

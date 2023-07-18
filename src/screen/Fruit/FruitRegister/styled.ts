@@ -50,7 +50,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     width: 328,
     height: 40,
-    marginTop: 220,
+    marginTop: 170,
     paddingStart: 8,
     paddingEnd: 8,
     alignItems: "center",

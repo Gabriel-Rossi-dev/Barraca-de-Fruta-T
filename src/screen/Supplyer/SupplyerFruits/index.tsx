@@ -1,9 +1,6 @@
 import { View, Text, Alert } from "react-native";
 import { styles } from "./styled";
-import {
-  FlatList,
-  TouchableOpacity,
-} from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import theme from "../../../global/theme/theme";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
@@ -34,7 +31,6 @@ export default function SupplyerFruits() {
   const [cpfValue, setCpfValue] = useState("");
   const [phoneValue, setPhoneValue] = useState("");
   const [listSupplyer, setListSupplyer] = useState([]);
-  const [fruitSupply, setFruitSupply] = useState("");
   const [listFruit, setListFruit] = useState([
     { name: "Banana", isSelected: false },
     { name: "Maça", isSelected: false },
@@ -75,19 +71,15 @@ export default function SupplyerFruits() {
     };
     setListSupplyer((prevList) => [...prevList, supplyer]);
 
-    try {
-      await AsyncStorage.setItem(
-        "listSupplyer",
-        JSON.stringify([...listSupplyer, supplyer])
-      );
+    await AsyncStorage.setItem(
+      "listSupplyer",
+      JSON.stringify([...listSupplyer, supplyer])
+    );
 
-      const supplyerInfo = await AsyncStorage.getItem("listSupplyer");
-      console.log("SUPPLYER INFO", supplyerInfo);
-      const testeList = JSON.stringify(listSupplyer);
-      setSupplyInfo(JSON.parse(testeList));
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    const supplyerInfo = await AsyncStorage.getItem("listSupplyer");
+    console.log("SUPPLYER INFO", supplyerInfo);
+    const testeList = JSON.stringify(listSupplyer);
+    setSupplyInfo(JSON.parse(testeList));
   }
 
   return (
