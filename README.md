@@ -4,4 +4,7 @@
 <li>Async Storage</li>
 <li>TypeScript</li>
 <li>componentização</li>
+<li>Hooks</li>
+<li>BottomTabNavigation</li>
+<li>StackNavigation</li>
 
